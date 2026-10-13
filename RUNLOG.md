@@ -122,3 +122,13 @@ Context: a prior attempt's page edits were reported as never landed; this retry 
 
 - Page files: NO CHANGES (already conformant; hashes identical to post-fix block).
 - This RUNLOG: appended this appendix entry only.
+
+## Contact fill-in (2026-10-12/13, owner-supplied details)
+- Replaced `[OWNER TO SUPPLY: email]` → veritasaiflows@gmail.com (7 occurrences) and `[OWNER TO SUPPLY: phone]` → 602.761.6858 (5 occurrences) across all 4 pages. All other placeholders (owner name, service area, social, year, metrics, case study, testimonial) intentionally left for later supply.
+- Details published to the PUBLIC repo only on separate push approval; never stored elsewhere.
+
+## SHA-256 (pages, post-contact-fill-in — CURRENT)
+- `index.html`: `e5b2b32df5b6390cf1a05653906db21fd1676cce411b4f026c05cba4a7e41290`
+- `services.html`: `68448ed2be093c7e9a5ba707394b18d82244cfad05dc2567269e774d0ecd109b`
+- `proof.html`: `4031c9d2e3ecde14576bb39555cb01e01618e11f37b96b2dc5be3a4b4b416bd5`
+- `contact.html`: `778d4cb77d350b27c9ab91a87bfe798e4708d7fde1b66a6c9fdbb41a0db5bfc9`
