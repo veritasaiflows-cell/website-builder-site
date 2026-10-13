@@ -1,0 +1,124 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Website Builder — fast, deterministic static sites for small business. No frameworks, no lock-in, verified builds.">
+<title>Website Builder — Fast, Deterministic Static Sites</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%231B4FD8'/%3E%3Cpath d='M16 20l6.5 24L32 28l9.5 16L48 20' fill='none' stroke='white' stroke-width='6' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
+<style>
+/* Additive v2.1 page styling comes FIRST; the canonical v0.1.2 block follows so its responsive states win equal-specificity ties. */
+/* --- additive v2.1 page styling (no token/class contradiction) --- */
+body { font-family: var(--font-body); margin: 0; color: var(--color-text); background: var(--color-bg); font-size: 1rem; line-height: 1.65; }
+.skip-link { position: absolute; left: 1rem; top: -4rem; background: var(--color-surface); color: var(--color-text); padding: .6rem 1rem; border: 2px solid var(--color-brand); border-radius: var(--radius-sm); font-weight: 600; text-decoration: none; z-index: 100; }
+.skip-link:focus { top: 1rem; }
+:focus-visible { outline: 3px solid var(--color-brand); outline-offset: 2px; }
+.site-header { border-bottom: 1px solid var(--color-line); background: var(--color-bg); }
+.site-header .measure { display: flex; align-items: center; justify-content: space-between; padding-top: 1rem; padding-bottom: 1rem; }
+.brandmark { display: inline-flex; align-items: center; gap: .5rem; font-weight: 700; font-size: 1.25rem; color: var(--color-text); text-decoration: none; }
+.icon-logo { width: 1.75rem; height: 1.75rem; }
+.site-nav { display: flex; gap: 1.5rem; }
+.site-nav a:not(.active) { color: var(--color-text); text-decoration: none; }
+.site-nav a:hover { color: var(--color-brand); }
+.hero-band { background: var(--color-brand-deep); color: #FFFFFF; padding: 4rem 0; }
+.hero-band .kicker { color: #FFFFFF; }
+.hero-band h1 { font-size: clamp(var(--type-hero-min, 2rem), 1.2rem + 4vw, var(--type-hero-max, 3.5rem)); line-height: 1.1; font-weight: 600; margin: .75rem 0 1rem; }
+.hero-band .lede { font-size: 1.25rem; line-height: 1.5; max-width: 44rem; margin: 0 0 1.5rem; }
+.hero-band .btn-ghost { color: #FFFFFF; }
+.hero-band :focus-visible { outline-color: #FFFFFF; }
+.hero-ctas { display: flex; gap: 1rem; flex-wrap: wrap; }
+.icon-card { width: 2rem; height: 2rem; color: var(--color-brand); margin-bottom: .75rem; }
+h2 { font-size: 1.75rem; line-height: 1.2; margin: 0 0 1rem; }
+h3 { font-size: 1.25rem; line-height: 1.3; margin: 0 0 .5rem; }
+.section-lede { color: var(--color-text-muted); max-width: 44rem; margin: 0 0 2rem; }
+.card p { color: var(--color-text-muted); margin: .5rem 0 0; }
+.rule { height: 4px; width: 3rem; background: var(--color-accent); border: 0; margin: 0 0 1rem; }
+.site-footer { background: var(--color-brand-deep); color: #FFFFFF; padding: 3rem 0 0; }
+.site-footer a { color: #FFFFFF; }
+.site-footer :focus-visible { outline-color: #FFFFFF; }
+.site-footer .cols { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
+.site-footer ul { list-style: none; margin: 0; padding: 0; }
+.site-footer li { margin-bottom: .5rem; }
+.bottom-bar { border-top: 1px solid rgba(255,255,255,.25); margin-top: 2rem; padding: 1rem 0; font-size: .875rem; line-height: 1.5; }
+.bottom-bar .measure { display: flex; justify-content: space-between; gap: 1rem; flex-wrap: wrap; }
+/* website-builder-kit v0.1.2 — tokens.css (semantic rename of v0.1.1; rename map in README). */
+:root {
+  --color-bg: #FFFFFF; --color-bg-alt: #F6F7F9; --color-text: #14202E; --color-text-muted: #5A6B7E;
+  --color-brand: #1B4FD8; --color-brand-deep: #143DA8; --color-accent: #12B5A5;
+  --color-line: #E2E8F0; --color-surface: #FFFFFF;
+  --radius-sm: 8px; --radius-md: 14px;
+  --layout-measure: 72rem;
+  --font-body: -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  --type-hero-min: 2rem; --type-hero-max: 3.5rem;
+}
+/* Canonical class contracts v0.1.2 (renamed; classes unchanged). */
+.measure { max-width: var(--layout-measure); margin: 0 auto; padding-left: 1.5rem; padding-right: 1.5rem; }
+.band { padding: 4rem 0; }
+.band-alt { background: var(--color-bg-alt); padding: 4rem 0; }
+.btn { display: inline-block; padding: .8rem 1.4rem; border-radius: var(--radius-sm); font-weight: 600; text-decoration: none; line-height: 1.4; }
+.btn-primary { background: var(--color-brand); color: #FFFFFF; }
+.btn-primary:hover { background: var(--color-brand-deep); }
+.btn-ghost { border: 1px solid currentColor; background: transparent; }
+.card { background: var(--color-surface); border: 1px solid var(--color-line); border-radius: var(--radius-md); padding: 1.5rem; box-shadow: 0 1px 2px rgba(20,32,46,.06); }
+.kicker { text-transform: uppercase; font-size: .875rem; line-height: 1.5; letter-spacing: .08em; font-weight: 600; }
+.grid-2 { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.5rem; }
+.grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
+.active { font-weight: 700; text-decoration: underline; }
+/* Canonical responsive states v0.1.2. */
+@media (max-width: 860px) {
+  .grid-3 { grid-template-columns: 1fr; }
+  .hero-band h1 { font-size: 2rem; }
+  .site-footer .cols { grid-template-columns: 1fr; }
+}
+@media (max-width: 640px) {
+  .grid-2 { grid-template-columns: 1fr; }
+  .band, .band-alt { padding: 2.5rem 0; }
+  .hero-band { padding: 2.5rem 0; }
+  .site-header .measure { flex-direction: column; align-items: flex-start; gap: .75rem; }
+  .site-nav { flex-direction: column; gap: .5rem; }
+}
+</style>
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header"><div class="measure">
+<a class="brandmark" href="index.html"><svg class="icon-logo" width="28" height="28" viewBox="0 0 32 32" aria-hidden="true" focusable="false"><rect x="2" y="2" width="28" height="28" rx="7" fill="none" stroke="currentColor" stroke-width="2.5"/><path d="M9 11l3 10 4-7 4 7 3-10" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>Website Builder</a>
+<nav class="site-nav" aria-label="Main"><a href="index.html" aria-current="page" class="active">Home</a><a href="services.html">Services</a><a href="proof.html">Proof</a><a href="contact.html">Contact</a></nav>
+</div></header>
+<section class="hero-band"><div class="measure">
+<p class="kicker">Website Builder — static sites, verified</p>
+<h1>Fast, deterministic static sites for small business.</h1>
+<p class="lede">No frameworks. No lock-in. Verified byte-identical builds, every time.</p>
+<div class="hero-ctas"><a class="btn btn-primary" href="services.html">See services</a><a class="btn btn-ghost" href="contact.html">Contact us</a></div>
+</div></section>
+<main id="main" tabindex="-1">
+<section class="band"><div class="measure">
+<hr class="rule">
+<h2>What we build</h2>
+<p class="section-lede">Single- and multi-page static sites: home, services, proof, contact — clean, mobile-friendly, self-contained.</p>
+<div class="grid-3">
+<div class="card"><svg class="icon-card" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="6" y="3" width="12" height="18" rx="2" fill="none" stroke="currentColor" stroke-width="2"/><path d="M9 8h6M9 12h6M9 16h4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg><h3>Single page</h3><p>One sharp page: who you are, what you offer, how to reach you. Best for getting found fast.</p></div>
+<div class="card"><svg class="icon-card" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12 3l9 5-9 5-9-5z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><path d="M3 13l9 5 9-5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><h3>Multi-page</h3><p>Home, services, proof, contact — the full small-business footprint, like this very site.</p></div>
+<div class="card"><svg class="icon-card" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M20 12a8 8 0 1 1-2.3-5.6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><path d="M20 3v4.5h-4.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><h3>Refresh</h3><p>Already have a site? We rebuild it clean: same content, faster load, verified output.</p></div>
+</div>
+</div></section>
+<section class="band-alt"><div class="measure">
+<hr class="rule">
+<h2>Verified, not promised</h2>
+<p class="section-lede">Our v1 build passed automated placement checks and byte-identical determinism runs before delivery. This v2 redesign is hand-authored to the same standard (v2 determinism deferred per proposal). Plain HTML you own outright — host anywhere, no subscriptions inside your site.</p>
+<p><a class="btn btn-primary" href="proof.html">How v1 proved the process</a></p>
+</div></section>
+<section class="band"><div class="measure">
+<hr class="rule">
+<h2>Start with a conversation</h2>
+<p class="section-lede">Tell us about your business and we&rsquo;ll reply with scope, timeline, and cost variables before anything is built.</p>
+<p><a class="btn btn-primary" href="contact.html">Contact us</a></p>
+</div></section>
+</main>
+<footer class="site-footer"><div class="measure"><div class="cols">
+<div><p><strong>Website Builder</strong></p><p>Fast, deterministic static sites for small business. Plain HTML you own outright.</p></div>
+<div><p><strong>Pages</strong></p><ul><li><a href="index.html">Home</a></li><li><a href="services.html">Services</a></li><li><a href="proof.html">Proof</a></li><li><a href="contact.html">Contact</a></li></ul></div>
+<div><p><strong>Contact</strong></p><ul><li>Email: [OWNER TO SUPPLY: email]</li><li>Phone: [OWNER TO SUPPLY: phone]</li></ul></div>
+</div></div><div class="bottom-bar"><div class="measure"><span>&copy; [OWNER TO SUPPLY: year] Website Builder</span><span>Built with plain HTML+CSS</span></div></div></footer>
+</body>
+</html>
